@@ -6,6 +6,7 @@
 @Init
 void call(context) {
   node{
+      sh(script: "chmod -R u+w .git", returnStdout: true).trim()
       unstash "workspace"
 
       env.GIT_URL = scm.getUserRemoteConfigs()[0].getUrl()
